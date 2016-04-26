@@ -1,0 +1,166 @@
+#open-panel{
+	position: absolute;
+	right: 1em;
+	top: 13px;
+	width: 4em;
+	height: 4em;
+	padding: .2em;
+	box-sizing: border-box;
+	cursor: pointer;
+	@media only screen and (min-width: 980px){
+		display: none!important;
+	}	
+}
+
+#open-panel div {
+    background: $blue none repeat scroll 0 0;
+    height: .5em;
+    margin-bottom: 0.8em;
+	border-radius: .1em;
+}
+
+#open-panel:active div, #open-panel:active div{
+	background: $gray;	
+}
+
+#close-panel{
+	@extends #open-panel;	
+}
+ 
+#close-panel div{
+	@extends #open-panel dt;
+	background: $gray;
+}
+
+#overlay{
+	background: rgba(0,0,0, .7);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	z-index: 900;
+	display: none;
+}
+
+#panel-container{
+	position: fixed;
+	top: 0;
+	right: -280px;
+	width: 280px;
+	z-index: 1000;
+	background: #fff;
+	height: 100%;
+	box-sizing: border-box;
+	overflow-y: scroll;
+	ul a{
+	 display: block; 
+	 color: $blue;
+	 font-size: 1.6em;
+	 text-decoration: none;
+	 padding: .4em;	
+	}
+	
+	ul a:hover, ul a:active{
+		background: $gray;
+		color: #fff;	
+	}
+	
+	ul a:active{
+		padding: .5em .4em .3em inherit;	
+	}
+	
+	ul ul a{
+		font-style: italic;	
+		padding-left: 1em;
+	}
+	
+}
+
+#main-nav{
+	display: none;
+	
+	@media only screen and (min-width: 980px){
+ 	  display: block; 
+	  background: #014e75;
+	  box-shadow: inset 0 0 20px rgba(0,0,0,.9);
+	}
+	
+	nav > ul{
+	  max-width: 1020px;
+	  margin: 0 auto;
+	  &:after{
+		@include clearFix;  
+	  }
+	  border-right: 1px solid rgba(0,157,220, .2);
+	}
+	nav > ul li{ 
+	  float: left; 
+	  width: 14.28%; 
+	  position: relative;
+	}
+	
+	a{
+	  color: #fff;
+	  font-size: 1.4em;
+	  display: block;
+	  padding: 1.4em;
+	  text-decoration: none;
+	  border-right: 1px solid rgba(2,64,95, .2);
+	  border-left: 1px solid rgba(0,157,220, .2);
+	  text-align: center;
+	  box-shadow: inset 0 0 20px rgba(0,0,0,.4);
+	  &:hover{
+		background: $darkBlue;	  
+	  }
+	} 
+	
+	ul li:hover{
+		> a{background: $darkBlue;} 
+		ul{ display: block; }	
+	}
+	
+	// First level ends
+	
+	nav > ul ul{ 
+      display: none;
+	  position: absolute;
+	  background: $darkBlue;   
+	   
+	}
+	
+	nav > ul ul li{
+		float: none;	
+		min-width: 100%;
+		a{
+		  text-align: left;
+		  box-shadow: none;
+		  padding: 1em;	
+		  white-space: nowrap;
+		}
+		a:hover{ background: $blue; color: #fff;}
+	}
+	
+	// Second level ends
+	
+	nav > ul ul ul {
+		 position: static;
+	}
+	
+	nav > ul ul ul li{
+		float: none;	
+		min-width: 100%;
+		a{
+		  text-align: left;
+		  box-shadow: none;
+		  padding: 1em 1em 1em 2em;	
+		  white-space: nowrap;
+		  background: #fff;
+		  color: $darkBlue;
+		  font-size: 1.2em;
+		}
+		 
+	}		
+	// Third level ends
+
+}
